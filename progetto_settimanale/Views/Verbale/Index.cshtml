@@ -1,0 +1,38 @@
+﻿@model IEnumerable<progetto_settimanale.Models.Verbale>
+@{
+    ViewData["Title"] = "Verbali";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data Violazione</th>
+            <th>Indirizzo Violazione</th>
+            <th>Nominativo Agente</th>
+            <th>Data Trascrizione Verbale</th>
+            <th>Importo</th>
+            <th>Decurtamento Punti</th>
+            <th>ID Anagrafica</th>
+            <th>ID Violazione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+           <tr>
+               <td>@item.idverbale</td>
+                <td>@item.DataViolazione.ToString("dd/MM/yyyy")</td>
+                <td>@item.IndirizzoViolazione</td>
+                <td>@item.Nominativo_Agente</td>
+                <td>@item.DataTrascrizioneVerbale.ToString("dd/MM/yyyy")</td>
+                <td>@item.Importo</td>
+                <td>@item.DecurtamentoPunti</td>
+                <td>@item.idanagrafica</td>
+                <td>@item.idviolazione</td>
+           </tr> 
+        }
+    </tbody>
+</table>

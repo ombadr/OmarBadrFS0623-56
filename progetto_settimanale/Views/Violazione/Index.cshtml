@@ -1,0 +1,26 @@
+﻿@model IEnumerable<progetto_settimanale.Models.Violazione>
+
+@{
+    ViewData["Title"] = "Violazioni";
+}
+
+
+<h2>Violazioni</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.idviolazione</td>
+                <td>@item.descrizione</td>
+            </tr>
+        }
+    </tbody>
+</table>

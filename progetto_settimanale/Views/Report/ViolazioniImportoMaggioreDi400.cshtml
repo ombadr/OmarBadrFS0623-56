@@ -1,0 +1,33 @@
+﻿@model IEnumerable<progetto_settimanale.Models.ViolazioniImportoMaggioreDi400>
+@{
+    ViewData["Title"] = "Violazioni Importo Maggiore di 400";
+}
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID Verbale</th>
+            <th>Data Violazione</th>
+            <th>Importo</th>
+            <th>Decurtamento Punti</th>
+            <th>Cognome</th>
+            <th>Nome</th>
+            <th>Tipo Violazione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.idverbale</td>
+                <td>@item.DataViolazione</td>
+                <td>@item.Importo</td>
+                <td>@item.DecurtamentoPunti</td>
+                <td>@item.Cognome</td>
+                <td>@item.Nome</td>
+                <td>@item.TipoViolazione</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<progetto_settimanale.Models.TotaleVerbaliPerTrasgressore>
+@{
+    ViewData["Title"] = "Totale Verbali Per Trasgressore";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cognome</th>
+            <th>Nome</th>
+            <th>Totale Verbali</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.idanagrafica</td>
+                <td>@item.Cognome</td>
+                <td>@item.Nome</td>
+                <td>@item.TotaleVerbali</td>
+            </tr>
+        }
+    </tbody>
+</table>
