@@ -1,0 +1,70 @@
+-- CREAZIONE DELLE TABELLE
+
+
+CREATE TABLE ANAGRAFICA (
+    idanagrafica INT IDENTITY(1,1) PRIMARY KEY,
+    Cognome  VARCHAR(50),
+    Nome VARCHAR(50),
+    Indirizzo VARCHAR(255),
+    Città VARCHAR(50),
+    CAP VARCHAR(5),
+    Cod_Fisc CHAR(16) UNIQUE
+);
+
+CREATE TABLE TIPO_VIOLAZIONE(
+    idviolazione INT IDENTITY(1,1) PRIMARY KEY,
+    descrizione VARCHAR(255)
+);
+
+CREATE TABLE VERBALE(
+    idverbale INT IDENTITY(1,1) PRIMARY KEY,
+    DataViolazione DATE,
+    IndirizzoViolazione VARCHAR(255),
+    Nominativo_Agente VARCHAR(255),
+    DataTrascrizioneVerbale DATE,
+    Importo DECIMAL(10, 2),
+    DecurtamentoPunti INT,
+    idanagrafica INT,
+    idviolazione INT,
+    FOREIGN KEY (idanagrafica) REFERENCES ANAGRAFICA(idanagrafica),
+    FOREIGN KEY (idviolazione) REFERENCES TIPO_VIOLAZIONE(idviolazione)
+);
+
+
+-- INSERIMENTO DEI DATI
+
+
+INSERT INTO ANAGRAFICA (Cognome, Nome, Indirizzo, Città, CAP, Cod_Fisc) VALUES
+('Rossi', 'Mario', 'Via Roma 1', 'Roma', '00100', 'RSSMRA85M01H501Z'),
+('Bianchi', 'Luca', 'Via Milano 2', 'Milano', '20100', 'BNCLCU82A01F205Z'),
+('Verdi', 'Giulia', 'Via Firenze 3', 'Firenze', '50100', 'VRDGIL88D50A561S'),
+('Neri', 'Francesco', 'Via Napoli 4', 'Napoli', '80100', 'NRIFNC90E01F839J'),
+('Gialli', 'Anna', 'Via Torino 5', 'Torino', '10100', 'GLLANN92P65Z100X'),
+('Azzurri', 'Carlo', 'Via Palermo 6', 'Palermo', '90100', 'AZZCRL93H26G273K'),
+('Marroni', 'Elisa', 'Via Genova 7', 'Genova', '16100', 'MRRLEI94M47D969Q'),
+('Viola', 'Marco', 'Via Bologna 8', 'Bologna', '40100', 'VOLMRC95S10A944N'),
+('Celesti', 'Sara', 'Via Venezia 9', 'Venezia', '30100', 'CLSSRA97E42L736C'),
+('Grigi', 'Andrea', 'Via Catania 10', 'Catania', '95100', 'GRGNDM98M01C351W');
+
+
+INSERT INTO TIPO_VIOLAZIONE (descrizione) VALUES
+('Eccesso di velocità'),
+('Sosta vietata'),
+('Attraversamento pedonale fuori dalle strisce'),
+('Uso del cellulare alla guida'),
+('Guida in stato di ebbrezza'),
+('Mancato uso della cintura di sicurezza');
+
+
+INSERT INTO VERBALE (DataViolazione, IndirizzoViolazione, Nominativo_Agente, DataTrascrizioneVerbale, Importo, DecurtamentoPunti, idanagrafica, idviolazione) VALUES
+('2024-01-10', 'Via Roma 1', 'Agente 001', '2024-01-11', 100.00, 2, 1, 1),
+('2024-01-12', 'Via Milano 2', 'Agente 002', '2024-01-13', 50.00, 0, 2, 2),
+('2024-02-05', 'Via Firenze 3', 'Agente 003', '2024-02-06', 150.00, 3, 3, 3),
+('2024-02-07', 'Via Napoli 4', 'Agente 004', '2024-02-08', 200.00, 4, 4, 4),
+('2024-03-10', 'Via Torino 5', 'Agente 005', '2024-03-11', 250.00, 5, 5, 5),
+('2024-03-15', 'Via Palermo 6', 'Agente 006', '2024-03-16', 300.00, 6, 6, 6),
+('2024-04-20', 'Via Genova 7', 'Agente 007', '2024-04-21', 350.00, 2, 7, 1),
+('2024-04-25', 'Via Bologna 8', 'Agente 008', '2024-04-26', 400.00, 0, 8, 2),
+('2024-05-30', 'Via Venezia 9', 'Agente 009', '2024-05-31', 450.00, 3, 9, 3),
+('2024-06-04', 'Via Catania 10', 'Agente 010', '2024-06-05', 500.00, 4, 10, 4);
+
